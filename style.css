@@ -1,0 +1,159 @@
+/* Reset inicial */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --text-color: #fff;
+    --bg-url: url("./assets/bg-mobile.jpg");
+    --stroke-color: rgba(255,255,255,.5);
+    --surface-color: rgba(255,255,255,.05);
+    --surface-hover: rgba(0,0,0,.02);
+    --highlight: rgba(255,255,255,.2);
+    --switch-icon: url("./assets/MoonStars.svg");
+}
+
+.light{
+    --text-color: #000;
+    --bg-url: url("./assets/bg-mobile-light.jpg");
+    --stroke-color: rgba(0,0,0,.5);
+    --surface-color: rgba(0,0,0,.05);
+    --surface-hover: rgba(0,0,0,.02);
+    --highlight: rgba(0,0,0,.1);
+    --switch-icon: url("./assets/Sun.svg");
+}
+
+body{
+    background: var(--bg-url) top center / cover;
+    height:100vh;
+    font-family: "Inter", sans-serif;
+}
+
+/* Faz todos os textos e ícones herdarem a cor da variável */
+body, body * {
+    color: var(--text-color);
+    fill: var(--text-color); /* para svg/ion-icon */
+}
+
+/* Remove o azul padrão dos links */
+a {
+    color: inherit;
+}  
+
+#container{
+    max-width:600px;
+    margin:60px auto 0;
+    padding:0 20px;
+}
+
+#profile{
+    text-align:center;
+}
+#profile img{
+    width:110px;
+}
+#profile p{
+    margin-top:10px;
+    line-height:1.5rem;
+    font-weight:600;
+}
+
+#switch{
+    width:64px;
+    margin:28px auto;
+    position:relative;
+}
+#switch button{
+    width:32px;
+    height:32px;
+    background:#fff var(--switch-icon) no-repeat center;
+    border:none;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translateY(-50%);
+    z-index:1;
+    animation: back-slide .2s;
+}
+.light #switch button{
+    animation: slide-in .4s forwards;
+}
+#switch button:hover{
+    outline:6px solid var(--highlight);
+}
+#switch span{
+    width:64px;
+    height:24px;
+    display:block;
+    background: var(--surface-color);
+    border:1px solid var(--stroke-color);
+    border-radius:999px;
+    backdrop-filter: blur(4px);
+}
+
+ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding:24px 0;
+}
+ul li a{
+    text-decoration:none;
+    font-weight:500;
+    padding:15px 22px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: var(--surface-color);
+    border:1px solid var(--stroke-color);
+    border-radius:8px;
+    transition:.2s;
+}
+ul li a:hover{
+    background: var(--surface-hover);
+    border-color: var(--text-color);
+}
+
+/* Redes sociais */
+#social-links{
+    display:flex;
+    justify-content:center;
+    padding:20px 0;
+    font-size:22px;
+}
+#social-links a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px;
+    border-radius:50%;
+    transition:background .2s;
+}
+#social-links a:hover{
+    background: var(--highlight);
+}
+
+footer{
+    padding:20px 0;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media (min-width:700px){
+    :root{ --bg-url:url("./assets/bg-desktop.jpg"); }
+    .light{ --bg-url:url("./assets/bg-desktop-light.jpg"); }
+}
+
+/* animações */
+@keyframes slide-in{
+    from{ left:0; }
+    to{ left:50%; }
+}
+@keyframes back-slide{
+    from{ left:50%; }
+    to{ left:0; }
+}
